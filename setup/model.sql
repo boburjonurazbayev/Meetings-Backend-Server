@@ -13,8 +13,8 @@ create type organizerType as enum('jismoniy', 'yuridik');
 DROP TABLE IF EXISTS events;
 CREATE TABLE events(
     event_id serial primary key,
-    event_category varchar(60),
-    event_sub_category varchar(60),
+    event_category varchar(60) not null,
+    event_sub_category varchar(60) not null,
     event_date date not null,
     event_time time not null,
     event_type eventType not null,
@@ -30,6 +30,10 @@ CREATE TABLE events(
     organiser_profession varchar(60) not null,
     contact text []
 );
+
+create index verify_ind on events (event_verify) where event_verify = 'verified';
+
+explain select * from events where event_verify = 'verified';
 
 ---------------------------------------------------------------Admins table
 

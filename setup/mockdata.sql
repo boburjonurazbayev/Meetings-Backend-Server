@@ -66,3 +66,5 @@ VALUES
         '{"998998455055", "998330033033"}', 
         'Najot Ta`lim MCHJ'
     );
+
+    update events set event_verify = 'verified' where event_id = 1; 
